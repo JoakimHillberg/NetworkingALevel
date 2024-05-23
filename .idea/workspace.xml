@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="Nätverkslabb, A-nivå, klar med kod till servern, skriver kod till klienten.">
+    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="Nätverkslabb, A-nivå, skrivit båda delarna, letar efter problem i koden.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Joakim_Klient/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Klient/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Joakim_Server/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Server/src/Main.java" afterDir="false" />
@@ -51,7 +51,7 @@
       <updated>1716213030450</updated>
       <workItem from="1716213031463" duration="421000" />
       <workItem from="1716213938372" duration="2500000" />
-      <workItem from="1716451869727" duration="4818000" />
+      <workItem from="1716451869727" duration="5224000" />
     </task>
     <task id="LOCAL-00001" summary="Nätverkslabb, A-nivå, skriver kod för servern.">
       <option name="closed" value="true" />
@@ -85,7 +85,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716455788192</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Nätverkslabb, A-nivå, skrivit båda delarna, letar efter problem i koden.">
+      <option name="closed" value="true" />
+      <created>1716456781447</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716456781447</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -94,6 +102,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Nätverkslabb, A-nivå, skriver kod för servern." />
     <MESSAGE value="Nätverkslabb, A-nivå, klar med kod till servern, skriver kod till klienten." />
-    <option name="LAST_COMMIT_MESSAGE" value="Nätverkslabb, A-nivå, klar med kod till servern, skriver kod till klienten." />
+    <MESSAGE value="Nätverkslabb, A-nivå, skrivit båda delarna, letar efter problem i koden." />
+    <option name="LAST_COMMIT_MESSAGE" value="Nätverkslabb, A-nivå, skrivit båda delarna, letar efter problem i koden." />
   </component>
 </project>

@@ -75,23 +75,23 @@ public class Main {
 
     public static String getSymbol(String msg) {
         if (msg.contains("+")) {
-            return "+";
+            return "\\+";
         } else if (msg.contains("-")) {
-            return "-";
+            return "\\-";
         } else if (msg.contains("*")) {
-            return "*";
+            return "\\*";
         } else if (msg.contains("/")) {
-            return "/";
+            return "\\/";
         }
         return "";
     }
 
     public static int calculate(String symbol, int number, int number2) {
         return switch (symbol) {
-            case "+" -> number + number2;
-            case "-" -> number - number2;
-            case "*" -> number * number2;
-            case "/" -> number / number2;
+            case "\\+" -> number + number2;
+            case "\\-" -> number - number2;
+            case "\\*" -> number * number2;
+            case "\\/" -> number / number2;
             default -> 0;
         };
     }
