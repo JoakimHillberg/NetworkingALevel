@@ -41,7 +41,9 @@ public class Main {
                 String msgFromClient = br.readLine();
 
                 // Calculate value
-                if (msgFromClient.contains("+") || msgFromClient.contains()) {
+                String symbol = getSymbol(msgFromClient);
+                String[] numbers = msgFromClient.split(symbol);
+                if (canParse(numbers[0]) && canParse(numbers[1])) {
 
                 }
             } catch (IOException ie) {
@@ -50,13 +52,37 @@ public class Main {
         }
     }
 
-    public String getSymbol(String msg) {
+    public static boolean canParse(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public static String getSymbol(String msg) {
         if (msg.contains("+")) {
             return "+";
         } else if (msg.contains("-")) {
             return "-";
         } else if (msg.contains("*")) {
-            
+            return "*";
+        } else if (msg.contains("/")) {
+            return "/";
+        }
+        return "";
+    }
+
+    public static int calculate(String symbol, int number, int number2) {
+        if (symbol.equals("+")) {
+            return number + number2;
+        } else if (symbol.equals("-")) {
+            return number - number2;
+        } else if (symbol.equals("*")) {
+            return number * number2;
+        } else if (symbol.equals("/")) {
+            return number / number2;
         }
     }
 }

@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="Nätverkslabb, A-nivå, skriver kod för servern.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Joakim_Klient/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Klient/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Joakim_Server/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Server/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,11 +50,24 @@
       <updated>1716213030450</updated>
       <workItem from="1716213031463" duration="421000" />
       <workItem from="1716213938372" duration="2500000" />
-      <workItem from="1716451869727" duration="965000" />
+      <workItem from="1716451869727" duration="2211000" />
     </task>
+    <task id="LOCAL-00001" summary="Nätverkslabb, A-nivå, skriver kod för servern.">
+      <option name="closed" value="true" />
+      <created>1716453222752</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716453222752</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Nätverkslabb, A-nivå, skriver kod för servern." />
+    <option name="LAST_COMMIT_MESSAGE" value="Nätverkslabb, A-nivå, skriver kod för servern." />
   </component>
 </project>
