@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Joakim_Klient/Joakim_Klient.iml" filepath="$PROJECT_DIR$/Joakim_Klient/Joakim_Klient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Joakim_Server/Joakim_Server.iml" filepath="$PROJECT_DIR$/Joakim_Server/Joakim_Server.iml" />
       <module fileurl="file://$PROJECT_DIR$/NetworkingALevel.iml" filepath="$PROJECT_DIR$/NetworkingALevel.iml" />
     </modules>
   </component>

@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="" />
+    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Joakim_Klient/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Klient/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Joakim_Server/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Server/src/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2gjZcZhHhb633nvO4e0Bd6V6vHX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -25,6 +33,12 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "openjdk-20",
+    "last_opened_file_path": "C:/Users/joakim.hillberg/Documents/Programmering 2/NetworkingServer_Joakim",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -36,8 +50,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1716213030450</updated>
-      <workItem from="1716213031463" duration="3000" />
+      <workItem from="1716213031463" duration="421000" />
+      <workItem from="1716213938372" duration="2500000" />
+      <workItem from="1716451869727" duration="965000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
