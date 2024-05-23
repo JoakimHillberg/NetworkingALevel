@@ -38,29 +38,26 @@ public class Main {
                 InputStream clientIn = client.getInputStream();
                 BufferedReader br = new BufferedReader(new InputStreamReader(clientIn));
                 String msgFromClient = br.readLine();
+                System.out.println(msgFromClient);
 
                 // Calculate value
                 String symbol = getSymbol(msgFromClient);
                 String[] numbers = msgFromClient.split(symbol);
                 String response = "";
-                if (canParse(numbers[0]) && canParse(numbers[1])) {
+                if (!symbol.isEmpty() && canParse(numbers[0]) && canParse(numbers[1])) {
                     response = Integer.toString(calculate(symbol,Integer.parseInt(numbers[0]),Integer.parseInt(numbers[1])));
                 }
 
                 // Send response to client
-                if (!msgFromClient.equalsIgnoreCase("bye")) {
-                    OutputStream clientOut = client.getOutputStream();
-                    PrintWriter pw = new PrintWriter(clientOut,true);
-                    String ans = "It becomes " + response;
+                OutputStream clientOut = client.getOutputStream();
+                PrintWriter pw = new PrintWriter(clientOut,true);
+                if (!symbol.isEmpty()) {
+                    String ans = "The answer becomes " + response;
                     pw.println(ans);
+                } else {
+                    pw.println("That can not be calculated");
                 }
 
-                // Close sockets
-                if (msgFromClient.equalsIgnoreCase("bye")) {
-                    server.close();
-                    client.close();
-                    break;
-                }
             } catch (IOException ie) {
                 System.out.println("I/O error " + ie);
             }
