@@ -1,3 +1,5 @@
+import com.sun.jdi.connect.Connector;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +45,14 @@ public class Main {
                 // Calculate value
                 String symbol = getSymbol(msgFromClient);
                 String[] numbers = msgFromClient.split(symbol);
+                int response = 0;
                 if (canParse(numbers[0]) && canParse(numbers[1])) {
+
+                    response = calculate(symbol,Integer.parseInt(numbers[0]),Integer.parseInt(numbers[1]));
+                }
+
+                // Send response to client
+                if (response != null) {
 
                 }
             } catch (IOException ie) {
@@ -75,14 +84,12 @@ public class Main {
     }
 
     public static int calculate(String symbol, int number, int number2) {
-        if (symbol.equals("+")) {
-            return number + number2;
-        } else if (symbol.equals("-")) {
-            return number - number2;
-        } else if (symbol.equals("*")) {
-            return number * number2;
-        } else if (symbol.equals("/")) {
-            return number / number2;
-        }
+        return switch (symbol) {
+            case "+" -> number + number2;
+            case "-" -> number - number2;
+            case "*" -> number * number2;
+            case "/" -> number / number2;
+            default -> 0;
+        };
     }
 }
