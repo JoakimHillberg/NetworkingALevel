@@ -51,11 +51,19 @@ public class Main {
                 // Send response to client
                 OutputStream clientOut = client.getOutputStream();
                 PrintWriter pw = new PrintWriter(clientOut,true);
-                if (!symbol.isEmpty()) {
-                    String ans = "The answer becomes " + response;
-                    pw.println(ans);
+                String ans = "Message from server: ";
+                if (msgFromClient.equalsIgnoreCase("bye")) {
+                    pw.println(ans + "Goodbye");
+                    server.close();
+                    client.close();
+                    pw.close();
+                    br.close();
+                    break;
+
+                } else if (!symbol.isEmpty()) {
+                    pw.println(ans + "The answer becomes " + response);
                 } else {
-                    pw.println("That can not be calculated");
+                    pw.println(ans + "That can not be calculated");
                 }
 
             } catch (IOException ie) {
@@ -74,14 +82,14 @@ public class Main {
     }
 
     public static String getSymbol(String msg) {
-        if (msg.contains("+")) {
+        if (msg.contains("/")) {
+            return "\\/";
+        } else if (msg.contains("*")) {
+            return "\\-";
+        } else if (msg.contains("+")) {
             return "\\+";
         } else if (msg.contains("-")) {
             return "\\-";
-        } else if (msg.contains("*")) {
-            return "\\*";
-        } else if (msg.contains("/")) {
-            return "\\/";
         }
         return "";
     }
