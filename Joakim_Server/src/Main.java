@@ -1,9 +1,6 @@
 import com.sun.jdi.connect.Connector;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.*;
 
 public class Main {
@@ -45,15 +42,24 @@ public class Main {
                 // Calculate value
                 String symbol = getSymbol(msgFromClient);
                 String[] numbers = msgFromClient.split(symbol);
-                int response = 0;
+                String response = "";
                 if (canParse(numbers[0]) && canParse(numbers[1])) {
-
-                    response = calculate(symbol,Integer.parseInt(numbers[0]),Integer.parseInt(numbers[1]));
+                    response = Integer.toString(calculate(symbol,Integer.parseInt(numbers[0]),Integer.parseInt(numbers[1])));
                 }
 
                 // Send response to client
-                if (response != null) {
+                if (!msgFromClient.equalsIgnoreCase("bye")) {
+                    OutputStream clientOut = client.getOutputStream();
+                    PrintWriter pw = new PrintWriter(clientOut,true);
+                    String ans = "It becomes " + response;
+                    pw.println(ans);
+                }
 
+                // Close sockets
+                if (msgFromClient.equalsIgnoreCase("bye")) {
+                    server.close();
+                    client.close();
+                    break;
                 }
             } catch (IOException ie) {
                 System.out.println("I/O error " + ie);
