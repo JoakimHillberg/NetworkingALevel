@@ -12,7 +12,12 @@ public class Main {
         int portNumber = 1234;
 
         // Create server side socket
-        server = new ServerSocket(portNumber);
+        try {
+            server = new ServerSocket(portNumber);
+        } catch (IOException ie) {
+            System.out.println("Cannot open socket. " + ie);
+            System.exit(1);
+        }
         System.out.println("ServerSocket is created " + server);
 
         // Listens for a connection to be made to
@@ -26,68 +31,76 @@ public class Main {
         int clientPort = client.getPort();
         System.out.println("Client host = " + clientHost + " Client port = " + clientPort);
 
+        // Wait for the data from the client and reply
         while (true) {
-            // Read data from the client
-            InputStream clientIn = client.getInputStream();
-            BufferedReader br = new BufferedReader(new InputStreamReader(clientIn));
-            String msgFromClient = br.readLine();
-            System.out.println(msgFromClient);
+            try {
+                // Read data from the client
+                InputStream clientIn = client.getInputStream();
+                BufferedReader br = new BufferedReader(new InputStreamReader(clientIn));
+                String msgFromClient = br.readLine();
+                System.out.println(msgFromClient);
 
-            // Calculate value
-            checkForNumber(msgFromClient);
+                // Calculate value
+                String symbol = getSymbol(msgFromClient);
+                String[] numbers = msgFromClient.split(symbol);
+                String response = "";
+                if (!symbol.isEmpty() && canParse(numbers[0]) && canParse(numbers[1])) {
+                    response = Integer.toString(calculate(symbol,Integer.parseInt(numbers[0]),Integer.parseInt(numbers[1])));
+                }
 
-            // Send response to client
-            OutputStream clientOut = client.getOutputStream();
-            PrintWriter pw = new PrintWriter(clientOut,true);
-            String ans = "Message from server: ";
-            if (msgFromClient.equalsIgnoreCase("bye")) {
-                pw.println(ans + "Goodbye");
-                server.close();
-                client.close();
-                pw.close();
-                br.close();
-                break;
-            } else {
-                pw.println(ans + "That can not be calculated");
+                // Send response to client
+                OutputStream clientOut = client.getOutputStream();
+                PrintWriter pw = new PrintWriter(clientOut,true);
+                String ans = "Message from server: ";
+                if (msgFromClient.equalsIgnoreCase("bye")) {
+                    pw.println(ans + "Goodbye");
+                    server.close();
+                    client.close();
+                    pw.close();
+                    br.close();
+                    break;
+
+                } else if (!symbol.isEmpty()) {
+                    pw.println(ans + "The answer becomes " + response);
+                } else {
+                    pw.println(ans + "That can not be calculated");
+                }
+
+            } catch (IOException ie) {
+                System.out.println("I/O error " + ie);
             }
         }
     }
 
-    public static boolean checkForNumber(String msg) {
-        String symbols = "+-*/";
-        String number1;
-        String number2;
-        boolean invalidMsg = msg.charAt(0) != '-' || !Character.isDigit(msg.charAt(0));
-
-        int start = 0;
-        if (msg.charAt(0) == '-') {
-            start++;
+    public static boolean canParse(String number) {
+        try {
+            Integer.parseInt(number);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
         }
+    }
 
-        if (!Character.isDigit(msg.charAt(start))) {
-            invalidMsg = true;
+    public static String getSymbol(String msg) {
+        if (msg.contains("/")) {
+            return "\\/";
+        } else if (msg.contains("*")) {
+            return "\\-";
+        } else if (msg.contains("+")) {
+            return "\\+";
+        } else if (msg.contains("-")) {
+            return "\\-";
         }
+        return "";
+    }
 
-        boolean dotAllowed = true;
-        for (int i = start + 1; i < msg.length(); i++) {
-            if (dotAllowed) {
-                if (!Character.isDigit(msg.charAt(i)) || msg.charAt(i) != '.') {
-                    invalidMsg = true;
-                    if (symbols.contains(String.valueOf(msg.charAt(i)))) {
-                        number1 = msg.substring(0,i);
-                        System.out.println(number1);
-                    }
-                } else if (msg.charAt(i) == '.') {
-                    dotAllowed = false;
-                }
-            } else {
-                if (!Character.isDigit(msg.charAt(i))) {
-
-                }
-            }
-        }
-
-        double[] numbers = new double[2];
-        return invalidMsg;
+    public static int calculate(String symbol, int number, int number2) {
+        return switch (symbol) {
+            case "\\+" -> number + number2;
+            case "\\-" -> number - number2;
+            case "\\*" -> number * number2;
+            case "\\/" -> number / number2;
+            default -> 0;
+        };
     }
 }
