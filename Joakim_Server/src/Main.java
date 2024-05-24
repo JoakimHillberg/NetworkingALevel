@@ -34,7 +34,7 @@ public class Main {
             System.out.println(msgFromClient);
 
             // Calculate value
-
+            checkForNumber(msgFromClient);
 
             // Send response to client
             OutputStream clientOut = client.getOutputStream();
@@ -53,4 +53,41 @@ public class Main {
         }
     }
 
+    public static boolean checkForNumber(String msg) {
+        String symbols = "+-*/";
+        String number1;
+        String number2;
+        boolean invalidMsg = msg.charAt(0) != '-' || !Character.isDigit(msg.charAt(0));
+
+        int start = 0;
+        if (msg.charAt(0) == '-') {
+            start++;
+        }
+
+        if (!Character.isDigit(msg.charAt(start))) {
+            invalidMsg = true;
+        }
+
+        boolean dotAllowed = true;
+        for (int i = start + 1; i < msg.length(); i++) {
+            if (dotAllowed) {
+                if (!Character.isDigit(msg.charAt(i)) || msg.charAt(i) != '.') {
+                    invalidMsg = true;
+                    if (symbols.contains(String.valueOf(msg.charAt(i)))) {
+                        number1 = msg.substring(0,i);
+                        System.out.println(number1);
+                    }
+                } else if (msg.charAt(i) == '.') {
+                    dotAllowed = false;
+                }
+            } else {
+                if (!Character.isDigit(msg.charAt(i))) {
+
+                }
+            }
+        }
+
+        double[] numbers = new double[2];
+        return invalidMsg;
+    }
 }
