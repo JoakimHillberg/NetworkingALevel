@@ -45,7 +45,7 @@ public class Main {
                 String[] numbers = msgFromClient.split(symbol);
                 String response = "";
                 if (!symbol.isEmpty() && canParse(numbers[0]) && canParse(numbers[1])) {
-                    response = Integer.toString(calculate(symbol,Integer.parseInt(numbers[0]),Integer.parseInt(numbers[1])));
+                    response = Double.toString(calculate(symbol,Double.parseDouble(numbers[0]),Double.parseDouble(numbers[1])));
                 }
 
                 // Send response to client
@@ -74,7 +74,7 @@ public class Main {
 
     public static boolean canParse(String number) {
         try {
-            Integer.parseInt(number);
+            Double.parseDouble(number);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -85,7 +85,7 @@ public class Main {
         if (msg.contains("/")) {
             return "\\/";
         } else if (msg.contains("*")) {
-            return "\\-";
+            return "\\*";
         } else if (msg.contains("+")) {
             return "\\+";
         } else if (msg.contains("-")) {
@@ -94,7 +94,7 @@ public class Main {
         return "";
     }
 
-    public static int calculate(String symbol, int number, int number2) {
+    public static double calculate(String symbol, double number, double number2) {
         return switch (symbol) {
             case "\\+" -> number + number2;
             case "\\-" -> number - number2;
