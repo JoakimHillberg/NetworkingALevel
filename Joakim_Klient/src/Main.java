@@ -26,7 +26,7 @@ public class Main {
         BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
-            System.out.println("Enter a number to calculate(use +,-,* or /)");
+            System.out.println("Enter a number to calculate(use +,-,* or /) or bye to exit");
 
             // Read data from standard input device and write it
             // to the output stream from the client socket.

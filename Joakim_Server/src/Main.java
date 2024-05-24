@@ -43,11 +43,12 @@ public class Main {
                 System.out.println(msgFromClient);
 
                 // Calculate value
-                String symbol = getSymbol(msgFromClient);
-                String[] numbers = msgFromClient.split(symbol);
-                String response = "";
-                if (!symbol.isEmpty() && canParse(numbers[0]) && canParse(numbers[1])) {
-                    response = Double.toString(calculate(symbol,Double.parseDouble(numbers[0]),Double.parseDouble(numbers[1])));
+                double response = 0;
+                if (getNumbers(msgFromClient) != null) {
+                    String symbol = getNumbers(msgFromClient)[0];
+                    double number1 = Double.parseDouble(getNumbers(msgFromClient)[1]);
+                    double number2 = Double.parseDouble(getNumbers(msgFromClient)[2]);
+                    response = calculate(symbol,number1,number2);
                 }
 
                 // Send response to client
@@ -62,8 +63,8 @@ public class Main {
                     br.close();
                     break;
 
-                } else if (!symbol.isEmpty()) {
-                    pw.println(ans + "The answer becomes " + response);
+                } else if (getNumbers(msgFromClient) != null) {
+                    pw.println("The answer becomes " + response);
                 } else {
                     pw.println(ans + "That can not be calculated");
                 }
@@ -72,28 +73,6 @@ public class Main {
                 System.out.println("I/O error " + ie);
             }
         }
-    }
-
-    public static boolean canParse(String number) {
-        try {
-            Double.parseDouble(number);
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    public static String getSymbol(String msg) {
-        if (msg.contains("/")) {
-            return "\\/";
-        } else if (msg.contains("*")) {
-            return "\\*";
-        } else if (msg.contains("+")) {
-            return "\\+";
-        } else if (msg.contains("-")) {
-            return "\\-";
-        }
-        return "";
     }
 
     public static double calculate(String symbol, double number, double number2) {
@@ -107,24 +86,28 @@ public class Main {
     }
 
     public static String[] getNumbers(String msg) {
-        String[] numbers = new String[2];
+        String[] numbers = null;
         String number1 = null;
         String number2 = null;
+        String symbol = null;
         Character[] symbols = {'+','-','*','/'};
         boolean validMessage = false;
-        boolean dotAllowed = true;
 
         if (Character.isDigit(msg.charAt(0)) || (Character.isDigit(msg.charAt(1)) && msg.charAt(0) == '-')) {
             for (int i = 0; i < msg.length(); i++) {
                 if (List.of(symbols).contains(msg.charAt(i))) {
-                    number1 = msg.substring(0,i);
+                    if (checkStringNumber(msg.substring(0,i)) && checkStringNumber(msg.substring(i+1))) {
+                        number1 = msg.substring(0,i);
+                        number2 = msg.substring(i+1);
+                        symbol = "\\" + msg.charAt(i);
+                        validMessage = true;
+                    }
                 }
             }
         }
 
         if (validMessage) {
-            numbers[0] = number1;
-            numbers[1] = number2;
+            numbers = new String[]{symbol,number1,number2};
         }
 
         return numbers;
@@ -132,16 +115,13 @@ public class Main {
 
     public static boolean checkStringNumber(String number) {
         boolean dotAllowed = true;
-        int validChars = 0;
-        if (Character.isDigit(number.charAt(0)) || (Character.isDigit(number.charAt(1)) && number.charAt(0) == '-')) {
-            validChars++;
-            for (int i = 1; i < number.length(); i++) {
-                if (dotAllowed && number.charAt(i) == '.') {
-                    validChars++;
-                    dotAllowed = false;
-                } else if (Character.isDigit(number.charAt(i))) {
-                    validChars++;
-                }
+        int validChars = 1;
+        for (int i = 1; i < number.length(); i++) {
+            if (dotAllowed && number.charAt(i - 1) != '-' && number.charAt(i) == '.') {
+                validChars++;
+                dotAllowed = false;
+            } else if (Character.isDigit(number.charAt(i))) {
+                validChars++;
             }
         }
 
