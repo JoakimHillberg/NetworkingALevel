@@ -2,6 +2,8 @@ import com.sun.jdi.connect.Connector;
 
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -102,5 +104,47 @@ public class Main {
             case "\\/" -> number / number2;
             default -> 0;
         };
+    }
+
+    public static String[] getNumbers(String msg) {
+        String[] numbers = new String[2];
+        String number1 = null;
+        String number2 = null;
+        Character[] symbols = {'+','-','*','/'};
+        boolean validMessage = false;
+        boolean dotAllowed = true;
+
+        if (Character.isDigit(msg.charAt(0)) || (Character.isDigit(msg.charAt(1)) && msg.charAt(0) == '-')) {
+            for (int i = 0; i < msg.length(); i++) {
+                if (List.of(symbols).contains(msg.charAt(i))) {
+                    number1 = msg.substring(0,i);
+                }
+            }
+        }
+
+        if (validMessage) {
+            numbers[0] = number1;
+            numbers[1] = number2;
+        }
+
+        return numbers;
+    }
+
+    public static boolean checkStringNumber(String number) {
+        boolean dotAllowed = true;
+        int validChars = 0;
+        if (Character.isDigit(number.charAt(0)) || (Character.isDigit(number.charAt(1)) && number.charAt(0) == '-')) {
+            validChars++;
+            for (int i = 1; i < number.length(); i++) {
+                if (dotAllowed && number.charAt(i) == '.') {
+                    validChars++;
+                    dotAllowed = false;
+                } else if (Character.isDigit(number.charAt(i))) {
+                    validChars++;
+                }
+            }
+        }
+
+        return validChars == number.length();
     }
 }
