@@ -40,7 +40,7 @@ public class Main {
                 InputStream clientIn = client.getInputStream();
                 BufferedReader br = new BufferedReader(new InputStreamReader(clientIn));
                 String msgFromClient = br.readLine();
-                System.out.println(msgFromClient);
+                System.out.println("Message received from client: " + msgFromClient);
 
                 // Calculate value
                 double response = 0;
@@ -54,9 +54,8 @@ public class Main {
                 // Send response to client
                 OutputStream clientOut = client.getOutputStream();
                 PrintWriter pw = new PrintWriter(clientOut,true);
-                String ans = "Message from server: ";
                 if (msgFromClient.equalsIgnoreCase("bye")) {
-                    pw.println(ans + "Goodbye");
+                    pw.println("Message from server: Goodbye");
                     server.close();
                     client.close();
                     pw.close();
@@ -64,9 +63,9 @@ public class Main {
                     break;
 
                 } else if (getNumbers(msgFromClient) != null) {
-                    pw.println("The answer becomes " + response);
+                    pw.println("Message from server: The answer becomes " + response);
                 } else {
-                    pw.println(ans + "That can not be calculated");
+                    pw.println("Message from server: That can not be calculated");
                 }
 
             } catch (IOException ie) {
