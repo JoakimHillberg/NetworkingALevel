@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="Nätverkslabb, A-nivå, fixat så att programmet fungerar helt.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Joakim_Server/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Joakim_Server/src/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="23b1a0d6-bc0f-4479-aed2-98c242e0a373" name="Changes" comment="Nätverkslabb, A-nivå, fixat några små fel i skriven text." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,7 +49,7 @@
       <workItem from="1716213938372" duration="2500000" />
       <workItem from="1716451869727" duration="5686000" />
       <workItem from="1716481154816" duration="11019000" />
-      <workItem from="1716565165163" duration="7608000" />
+      <workItem from="1716565165163" duration="7926000" />
     </task>
     <task id="LOCAL-00001" summary="Nätverkslabb, A-nivå, skriver kod för servern.">
       <option name="closed" value="true" />
@@ -150,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716575777248</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Nätverkslabb, A-nivå, fixat några små fel i skriven text.">
+      <option name="closed" value="true" />
+      <created>1716577017846</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716577017846</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +173,7 @@
     <MESSAGE value="Nätverkslabb, A-nivå, skrivit klart koden så att den fungerar för normala scenarion där användaren är snäll." />
     <MESSAGE value="Nätverkslabb, A-nivå, experimenterar med bättre sätt för uträkning där programmet klagar på fel input." />
     <MESSAGE value="Nätverkslabb, A-nivå, fixat så att programmet fungerar helt." />
-    <option name="LAST_COMMIT_MESSAGE" value="Nätverkslabb, A-nivå, fixat så att programmet fungerar helt." />
+    <MESSAGE value="Nätverkslabb, A-nivå, fixat några små fel i skriven text." />
+    <option name="LAST_COMMIT_MESSAGE" value="Nätverkslabb, A-nivå, fixat några små fel i skriven text." />
   </component>
 </project>

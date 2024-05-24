@@ -74,6 +74,7 @@ public class Main {
         }
     }
 
+    // Calculate the result of the problem
     public static double calculate(String symbol, double number, double number2) {
         return switch (symbol) {
             case "\\+" -> number + number2;
@@ -84,6 +85,7 @@ public class Main {
         };
     }
 
+    // Get the two numbers that are used in the problem
     public static String[] getNumbers(String msg) {
         String[] numbers = null;
         String number1 = null;
@@ -92,6 +94,7 @@ public class Main {
         Character[] symbols = {'+','-','*','/'};
         boolean validMessage = false;
 
+        // Get the numbers and symbol if the message is a valid math problem
         if (Character.isDigit(msg.charAt(0)) || (Character.isDigit(msg.charAt(1)) && msg.charAt(0) == '-')) {
             for (int i = 0; i < msg.length(); i++) {
                 if (List.of(symbols).contains(msg.charAt(i))) {
@@ -112,6 +115,7 @@ public class Main {
         return numbers;
     }
 
+    // Check if the String is a valid number
     public static boolean checkStringNumber(String number) {
         boolean dotAllowed = true;
         int validChars = 1;
